@@ -1,7 +1,7 @@
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import app
+import app.frontend.src.app as app
 
 def test_local():
     hf_token = os.environ.get("CASESTUDY1HF")
