@@ -41,6 +41,6 @@ echo "Start app backend"
 "cd \"${REMOTE_DIR}\" && \
  (pkill -f \"uvicorn\" || true) && \
  (tmux kill-session -t backend || true) && \
- tmux new -d -s backend \"source .venv/bin/active && uvicorn backend:api --host 0.0.0.0 --port 9005\""
+ tmux new -d -s backend \"source .venv/bin/activate && uvicorn api:app --host 0.0.0.0 --port 9005\""
 
 echo "Done"
