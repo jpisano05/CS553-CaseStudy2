@@ -9,7 +9,7 @@ PORT="22005"
 SERVER="paffenroth-23.dyn.wpi.edu"
 KEY_PATH="../ssh_keys/secure_key"
 
-LOCAL_DIR="app/backend/src/api.py"
+LOCAL_DIR="src/api.py"
 REMOTE_DIR="./app"
 
 SSH_BASE=(ssh -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
