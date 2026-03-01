@@ -13,7 +13,7 @@ LOCAL_DIR = "./app/frontend/src/."
 REMOTE_DIR="./app"
 
 SSH_BASE=(ssh -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
-SCP_BASE=(scp -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null)
+SCP_BASE=(scp -i "${KEY_PATH}" -P "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null)
 
 echo "Copying App Frontend to Frontend Sever."
 
