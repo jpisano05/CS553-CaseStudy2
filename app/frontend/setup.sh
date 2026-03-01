@@ -7,7 +7,7 @@ set -euo pipefail
 USER="group05"
 PORT="22000"
 SERVER="paffenroth-23.dyn.wpi.edu"
-KEY_PATH="./ssh_keys/group_key"
+KEY_PATH="../ssh_keys/secure_key"
 
 LOCAL_DIR = "./app/frontend/src/."
 REMOTE_DIR="./app"
