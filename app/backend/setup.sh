@@ -37,8 +37,8 @@ echo "Creating Python virtual environment"
 
 echo "Start app backend"
 
-"${SSH_BASE[@]}" \
-"cd \"${REMOTE_DIR}\" && \
+"${SSH_BASE[@]}" -tt \
+"set -x; cd \"${REMOTE_DIR}\" && \
  (tmux kill-session -t backend || true) && \
  tmux new -d -s backend \"source .venv/bin/activate && uvicorn api:app --host 0.0.0.0 --port 9005\""
 
