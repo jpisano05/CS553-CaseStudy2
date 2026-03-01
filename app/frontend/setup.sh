@@ -13,11 +13,11 @@ LOCAL_DIR = "./app/frontend/src/."
 REMOTE_DIR="./app"
 
 SSH_BASE=(ssh -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
-SCP_BASE=(ssh -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null)
+SCP_BASE=(scp -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null)
 
 echo "Copying App Frontend to Frontend Sever."
 
-"${SSH_BASE[@]}" "rm -rf \"#{REMOTE_DIR}\" && mkdir -p \"${REMOTE_DIR}\""
+"${SSH_BASE[@]}" "rm -rf \"${REMOTE_DIR}\" && mkdir -p \"${REMOTE_DIR}\""
 "${SCP_BASE[@]}" -r "${LOCAL_DIR}" "${USER}@${SERVER}:${REMOTE_DIR}"
 
 echo "Installing API Packages"
@@ -31,14 +31,14 @@ echo "Creating Python virtual environment"
 "${SSH_BASE[@]}" \
 "cd \"${REMOTE_DIR}\" && \
  python3 -m venv .venv && \
- source .venv/bin/active && \
+ source .venv/bin/activate && \
  pip install --upgrade pip --no-cache-dir && \
  pip install gradio requests --no-cache-dir"
 
 echo "Start app frontend"
 
 "${SSH_BASE[@]}" \
-"cd \"{REMOTE_DIR}\" && \
+"cd \"${REMOTE_DIR}\" && \
  (sudo fuser -k 7005/tcp || true) && \
  (tmux kill-session -t frontend || true) && \
  tmux new -d -s gradio \".venv/bin/python app.py\""
