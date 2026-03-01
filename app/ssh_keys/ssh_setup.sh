@@ -15,8 +15,7 @@ ls
 chmod 600 "$GROUP_KEY_PATH"
 ls -l "$GROUP_KEY_PATH"
 # Setup SSH command
-SSH_BASE=(ssh -i "$GROUP_KEY_PATH" -p "$PORT" -o StrictHostKeyChecking=no -
-o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
+SSH_BASE=(ssh -i "$GROUP_KEY_PATH" -p "$PORT" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
 echo "${SSH_BASE[@]}"
 # Create new SSH key
 rm -f "$SECURE_KEY_NAME" "$SECURE_KEY_NAME.pub"
@@ -34,7 +33,7 @@ echo "$SECURE_PUB_KEY_CONTENT"
 # Try connecting via new key
 SSH_BASE[2]="./${SECURE_KEY_NAME}"
 if ! "${SSH_BASE[@]}" "cat ~/.ssh/authorized_keys"; then
-exit 1
+    exit 1
 fi
 # Print command to use to test
 echo "${SSH_BASE[@]}"
