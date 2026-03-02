@@ -8,6 +8,7 @@ USER="group05"
 PORT="22005"
 SERVER="paffenroth-23.dyn.wpi.edu"
 KEY_PATH="../ssh_keys/secure_key"
+HF_TOKEN="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"
 
 LOCAL_DIR="src/api.py"
 REMOTE_DIR="./app"
@@ -40,6 +41,6 @@ echo "Start app backend"
 "${SSH_BASE[@]}" \
 "cd \"${REMOTE_DIR}\" && \
  tmux kill-session -t backend 2>/dev/null || true && \
- tmux new-session -d -s backend bash -c 'source .venv/bin/activate && uvicorn api:app --host 0.0.0.0 --port 9005 >> backend.log 2>&1'"
+ tmux new-session -d -s backend bash -c 'export HF_TOKEN=\"${HF_TOKEN}\" && source .venv/bin/activate && uvicorn api:app --host 0.0.0.0 --port 9005 >> backend.log 2>&1'"
 
 echo "Done"
