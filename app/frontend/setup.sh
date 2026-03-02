@@ -17,7 +17,7 @@ SCP_BASE=(scp -i "${KEY_PATH}" -P "${PORT}" -o StrictHostKeyChecking=no -o UserK
 
 echo "Copying App Frontend to Frontend Sever."
 
-"${SSH_BASE[@]}" "rm -rf \"${REMOTE_DIR}\" && mkdir -p \"${REMOTE_DIR}\""
+"${SSH_BASE[@]}" "mkdir -p \"${REMOTE_DIR}\""
 "${SCP_BASE[@]}" -r "${LOCAL_DIR}" "${USER}@${SERVER}:${REMOTE_DIR}"
 
 echo "Installing API Packages"
@@ -30,7 +30,7 @@ echo "Creating Python virtual environment"
 
 "${SSH_BASE[@]}" \
 "cd \"${REMOTE_DIR}\" && \
- python3 -m venv .venv && \
+ if [ ! -d .venv ]; then python3 -m venv .venv; fi && \
  source .venv/bin/activate && \
  pip install --upgrade pip --no-cache-dir && \
  pip install gradio requests --no-cache-dir"
