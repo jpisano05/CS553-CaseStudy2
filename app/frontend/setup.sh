@@ -8,7 +8,13 @@ USER="group05"
 PORT="22000"
 SERVER="paffenroth-23.dyn.wpi.edu"
 KEY_PATH="../ssh_keys/group_key"
-HF_TOKEN="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"
+
+if [ -f "$HOME/.config/api_keys" ]; then
+    source "$HOME/.config/api_keys"
+else
+    echo "keys not found"
+    exit 1
+fi
 
 LOCAL_DIR="src/app.py"
 REMOTE_DIR="./app"
@@ -43,5 +49,5 @@ echo "Start app frontend"
  (sudo fuser -k 7005/tcp || true) && \
  (tmux kill-session -t gradio 2>/dev/null || true) && \
  tmux new-session -d -s gradio \"export HF_TOKEN='YOUR_HF_TOKEN_HERE' && .venv/bin/python app.py\""
-
+ 
 echo "Done"

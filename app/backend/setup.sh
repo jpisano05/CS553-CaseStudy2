@@ -8,7 +8,13 @@ USER="group05"
 PORT="22005"
 SERVER="paffenroth-23.dyn.wpi.edu"
 KEY_PATH="../ssh_keys/secure_key"
-HF_TOKEN="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"
+
+if [ -f "$HOME/.config/api_keys" ]; then
+    source "$HOME/.config/api_keys"
+else
+    echo "keys not found"
+    exit 1
+fi
 
 LOCAL_DIR="src/api.py"
 REMOTE_DIR="./app"
