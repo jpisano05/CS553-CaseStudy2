@@ -40,8 +40,7 @@ echo "Start app frontend"
 "${SSH_BASE[@]}" \
 "cd \"${REMOTE_DIR}\" && \
  (sudo fuser -k 7005/tcp || true) && \
- tmux new-session -d -s gradio \".venv/bin/python app.py\" || \
- tmux kill-session -t gradio && \
+ (tmux kill-session -t gradio 2>/dev/null || true) && \
  tmux new-session -d -s gradio \".venv/bin/python app.py\""
-
+ 
 echo "Done"
