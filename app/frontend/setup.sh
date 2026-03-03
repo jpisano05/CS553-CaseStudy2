@@ -40,7 +40,7 @@ echo "Creating Python virtual environment"
  if [ ! -d .venv ]; then python3 -m venv .venv; fi && \
  source .venv/bin/activate && \
  pip install --upgrade pip --no-cache-dir && \
- pip install gradio requests --no-cache-dir"
+ pip install "gradio[oauth]" requests --no-cache-dir"
 
 echo "Start app frontend"
 
