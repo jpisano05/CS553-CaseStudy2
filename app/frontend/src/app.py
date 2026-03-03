@@ -110,9 +110,5 @@ with gr.Blocks(title="Coffee Connoisseur", css="""
     chatbot.render()
 
 
-demo.launch(
-    server_name="0.0.0.0",
-    server_port=7005,
-    auth="huggingface",
-    auth_path="https://paffenroth-23.dyn.wpi.edu:7005"
-)
+if __name__ == "__main__":
+    demo.launch(server_name="0.0.0.0", server_port=7005)
