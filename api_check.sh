@@ -3,6 +3,10 @@ API_PORT="9005"
 API_SERVER="paffenroth-23.dyn.wpi.edu"
 HTTP_TIMEOUT_SECONDS="2"
 HTTP_MAX_TIME_SECONDS="3"
+
+SSH_SETUP="./app/ssh_keys/ssh_setup.sh"
+BACKEND_SETUP="./app/backend/setup.sh"
+FRONTEND_SETUP="./app/frontend/setup.sh"
 # Check API
 echo "Checking HTTP on http://${API_SERVER}:${API_PORT}"
 
@@ -12,3 +16,6 @@ if curl -fv --connect-timeout "$HTTP_TIMEOUT_SECONDS" --max-time "$HTTP_MAX_TIME
 fi
 
 echo "No HTTP response detected on port ${API_PORT}."
+echo "Restarting API and frontend"
+
+SSH_SETUP && BACKEND_SETUP && FRONTEND_SETUP
