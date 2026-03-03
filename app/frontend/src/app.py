@@ -1,5 +1,6 @@
 import gradio as gr
 import requests
+import os
 
 #Code for differentiation between running locally and API is based on Professor Paffenroth's Chatbot
 
@@ -9,9 +10,10 @@ def respond(
     message,
     history,
     max_tokens,
-    hf_token: gr.OAuthToken,
     use_local: bool,
 ):
+    hf_token = os.environ.get("HF_TOKEN")
+    
     if use_local == True:
         #run local model
         
@@ -38,7 +40,7 @@ def respond(
         data = {
             "message": message,
             "max_tokens": max_tokens,
-            "hf_token": hf_token.token,
+            "hf_token": hf_token,
         }
 
         #send post request
@@ -105,8 +107,6 @@ with gr.Blocks(title="Coffee Connoisseur", css="""
         """,
     )    
     
-    with gr.Sidebar():
-        gr.LoginButton()
     chatbot.render()
 
 
