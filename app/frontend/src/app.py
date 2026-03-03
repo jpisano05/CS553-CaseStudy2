@@ -4,7 +4,7 @@ import os
 
 #Code for differentiation between running locally and API is based on Professor Paffenroth's Chatbot
 
-api_url = "http://127.0.0.1:9005"
+api_url = "http://0.0.0.0:9005"
 
 def respond(
     message,
