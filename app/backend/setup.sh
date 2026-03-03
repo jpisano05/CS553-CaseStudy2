@@ -9,8 +9,8 @@ PORT="22005"
 SERVER="paffenroth-23.dyn.wpi.edu"
 KEY_PATH="../ssh_keys/secure_key"
 
-if [ -f "$HOME/.config/api_keys" ]; then
-    source "$HOME/.config/api_keys"
+if [ -f "../../.config/api_keys" ]; then
+    source "../../.config/api_keys"
 else
     echo "keys not found"
     exit 1
