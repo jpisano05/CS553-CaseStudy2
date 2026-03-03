@@ -48,6 +48,6 @@ echo "Start app frontend"
 "cd \"${REMOTE_DIR}\" && \
  (sudo fuser -k 7005/tcp || true) && \
  (tmux kill-session -t gradio 2>/dev/null || true) && \
- tmux new-session -d -s gradio \"export HF_TOKEN='YOUR_HF_TOKEN_HERE' && .venv/bin/python app.py\""
+ tmux new-session -d -s gradio \"export HF_TOKEN='${HF_TOKEN}' && .venv/bin/python app.py\""
  
 echo "Done"
