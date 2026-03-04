@@ -7,10 +7,11 @@ set -euo pipefail
 USER="group05"
 PORT="22005"
 SERVER="paffenroth-23.dyn.wpi.edu"
-KEY_PATH="../ssh_keys/secure_key"
+KEY_PATH="home/jjpisano/CS553/CS553-CaseStudy2/app/ssh_keys/secure_key"
+TOKEN_PATH="home/jjpisano/CS553/CS553-CaseStudy2/.config/api_keys"
 
-if [ -f "../../.config/api_keys" ]; then
-    source "../../.config/api_keys"
+if [ -f "$TOKEN_PATH" ]; then
+    source "$TOKEN_PATH"
 else
     echo "keys not found"
     exit 1
