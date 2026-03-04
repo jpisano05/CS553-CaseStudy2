@@ -17,7 +17,7 @@ else
     exit 1
 fi
 
-LOCAL_DIR="src/app.py"
+LOCAL_DIR="/home/jjpisano/CS553/CS553-CaseStudy2/app/frontend/src/app.py"
 REMOTE_DIR="./app"
 
 SSH_BASE=(ssh -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
