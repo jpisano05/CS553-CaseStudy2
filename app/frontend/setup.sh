@@ -7,7 +7,7 @@ set -euo pipefail
 USER="group05"
 PORT="22000"
 SERVER="paffenroth-23.dyn.wpi.edu"
-KEY_PATH="/home/jjpisano/CS553/CS553-CaseStudy2/app/ssh_keys/secure_key"
+KEY_PATH="/home/jjpisano/CS553/CS553-CaseStudy2/app/ssh_keys/group_key"
 TOKEN_PATH="/home/jjpisano/CS553/CS553-CaseStudy2/.config/api_keys"
 
 if [ -f "$TOKEN_PATH" ]; then
