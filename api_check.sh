@@ -18,4 +18,16 @@ fi
 echo "No HTTP response detected on port ${API_PORT}."
 echo "Restarting API and frontend"
 
-SSH_SETUP && BACKEND_SETUP && FRONTEND_SETUP
+echo "Replacing ssh_keys with secure versions"
+bash "$SSH_SETUP"
+echo "Completed SSH setup"
+
+echo "Starting API Backend"
+bash "$BACKEND_SETUP"
+echo "API Started"
+
+echo "Starting Frontend"
+bash "$FRONTEND_SETUP"
+echo "Front end started"
+
+echo "Recovery complete"
