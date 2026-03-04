@@ -10,6 +10,8 @@ SERVER="paffenroth-23.dyn.wpi.edu"
 KEY_PATH="/home/jjpisano/CS553/CS553-CaseStudy2/app/ssh_keys/secure_key"
 TOKEN_PATH="/home/jjpisano/CS553/CS553-CaseStudy2/.config/api_keys"
 
+#check that the hugging face token was found
+#if not then exit
 if [ -f "$TOKEN_PATH" ]; then
     source "$TOKEN_PATH"
 else
@@ -17,9 +19,11 @@ else
     exit 1
 fi
 
+#quick directory access
 LOCAL_DIR="/home/jjpisano/CS553/CS553-CaseStudy2/app/backend/src/api.py"
 REMOTE_DIR="./app"
 
+#setup the basic ssh and scp commands for reuse
 SSH_BASE=(ssh -i "${KEY_PATH}" -p "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${USER}@${SERVER}")
 SCP_BASE=(scp -i "${KEY_PATH}" -P "${PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null)
 
